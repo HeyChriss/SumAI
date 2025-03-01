@@ -4,3 +4,4 @@ SumAI is a Google Chrome extension that transforms any website into an interacti
 
 
 This is the Controller branch
+Vinnie will be working on this
