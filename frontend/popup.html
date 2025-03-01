@@ -7,17 +7,17 @@
     <link rel="stylesheet" crossorigin href="style.css" />
   </head>
   <body>
-    <div class="bg-neutral-200 w-80 h-96 flex flex-col p-4 gap-4">
+    <div class="bg-neutral-200 w-80 h-100 flex flex-col p-1 gap-4">
       <div
-        class="absolute top-0 left-0 w-full p-2 bg-white flex items-center gap-2"
+        class="flex justify-between p-2 bg-white items-center gap-2"
       >
         <h1 class="italic font-bold">Sum It Up AI Bot</h1>
       </div>
 
-      <div id="chatBox" class="flex flex-col gap-1 mt-6"></div>
+      <div id="chatBox" class="flex-1 overflow-y-auto p-2 flex flex-col gap-1"></div>
 
       <div
-        class="absolute bottom-0 left-0 w-full p-2 bg-white flex items-center gap-2"
+        class="p-2 bg-blue-200 flex items-center gap-2 border-t"
       >
         <input
           type="text"

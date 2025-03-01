@@ -86,6 +86,10 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
+function scrollToRecent() {
+  chatBox.scrollTo(0, chatBox.scrollHeight);
+}
+
 async function handleUserInput() {
   const userText = userInput.value.trim();
 
@@ -96,7 +100,7 @@ async function handleUserInput() {
     chatBox.appendChild(userPrompt);
     userInput.value = "";
     submitBtn.innerHTML = micSvg;
-
+    scrollToRecent();
     await sleep(1000);
     Reply("Sorry! Sum it up AI is under construction");
   }
@@ -111,7 +115,7 @@ function Reply(message) {
   AIReply.className = "flex justify-start";
   AIReply.innerHTML = `<p class="inline-flex max-w-sm bg-gray-50 p-3 rounded-lg rounded-bl-none self-start chat-bubble drop-shadow-lg">${message}</p>`;
   chatBox.appendChild(AIReply);
-
+  scrollToRecent();
   setTimeout(() => {
     AIReply.classList.add("animate-fadeIn");
   }, 100);
@@ -122,7 +126,7 @@ const webkitSpeechRecognition =
   window.webkitSpeechRecognition || window.SpeechRecognition;
 
 //speech Recognition from https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
-  if ("webkitSpeechRecognition" in window) {
+if ("webkitSpeechRecognition" in window) {
   recognition = new webkitSpeechRecognition();
   recognition.continuous = false; // Stop after one sentence
   recognition.interimResults = true; // type as you're talking
