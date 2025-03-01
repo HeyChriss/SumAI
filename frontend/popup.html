@@ -8,7 +8,14 @@
   </head>
   <body>
     <div class="bg-neutral-200 w-80 h-96 flex flex-col p-4 gap-4">
-      <h1 class="italic text-3xl">Hello world</h1>
+      <div
+        class="absolute top-0 left-0 w-full p-2 bg-white flex items-center gap-2"
+      >
+        <h1 class="italic font-bold">Sum It Up AI Bot</h1>
+      </div>
+
+      <div id="chatBox" class="flex flex-col gap-1 mt-6"></div>
+
       <div
         class="absolute bottom-0 left-0 w-full p-2 bg-white flex items-center gap-2"
       >
@@ -16,17 +23,17 @@
           type="text"
           id="prompt"
           name="prompt"
-          class="rounded p-2 border outline-black focus:outline-none flex-1"
+          placeholder="Summarize this webpage for me..."
+          class="rounded p-2 border outline-black focus:outline-none flex-1 placeholder:italic"
         />
         <button
           type="submit"
-          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-all ease-in-out"
+          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-all ease-in-out active:scale-95"
           id="submitBtn"
         >
-          Enter
         </button>
       </div>
     </div>
-    <script src="popup.js"></script>
+    <script type="module" src="popup.js"></script>
   </body>
 </html>
