@@ -290,7 +290,7 @@ async function handleUserInput() {
         // Display user message
         const userPrompt = document.createElement('div');
         userPrompt.className = 'flex justify-end';
-        userPrompt.innerHTML = `<p class="inline-flex max-w-sm bg-blue-500 text-white p-3 rounded-lg rounded-br-none self-end">${userText}</p>`;
+        userPrompt.innerHTML = `<p class="inline-flex max-w-sm bg-blue-500 text-white p-3 rounded-lg rounded-br-none self-end chat-bubble drop-shadow-lg">${userText}</p>`;
         chatBox.appendChild(userPrompt);
         
         // Clear input field and update button icon
@@ -353,7 +353,7 @@ function Reply(message) {
     const chatBox = document.getElementById('chatBox');
     const AIReply = document.createElement('div');
     AIReply.className = 'flex justify-start';
-    AIReply.innerHTML = `<p class="inline-flex max-w-sm bg-gray-50 p-3 rounded-lg rounded-bl-none self-start">${message}</p>`;
+    AIReply.innerHTML = `<p class="inline-flex max-w-sm bg-gray-50 p-3 rounded-lg rounded-bl-none self-start chat-bubble drop-shadow-lg">${message}</p>`;
     chatBox.appendChild(AIReply);
     
     // Auto-scroll to latest message
