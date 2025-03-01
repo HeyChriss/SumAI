@@ -63,8 +63,9 @@ const getRequestAI = async (input) => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    userInput.focus();
+// this is to activate the input as soon as the user clicks on the extension icon
+document.addEventListener("DOMContentLoaded", () => {
+  userInput.focus();
 });
 userInput.addEventListener("input", () => {
   submitBtn.innerHTML = userInput.value.trim() ? sendSvg : micSvg;
@@ -78,12 +79,11 @@ userInput.addEventListener("keydown", (event) => {
 });
 
 submitBtn.addEventListener("click", () => {
-    if (userInput.value.trim()){
-        handleUserInput();
-    }
-    else {
-        startSpeechRecognition()
-    }
+  if (userInput.value.trim()) {
+    handleUserInput();
+  } else {
+    startSpeechRecognition();
+  }
 });
 
 async function handleUserInput() {
@@ -118,48 +118,52 @@ function Reply(message) {
 }
 
 let recognition;
-const webkitSpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+const webkitSpeechRecognition =
+  window.webkitSpeechRecognition || window.SpeechRecognition;
 
-if ('webkitSpeechRecognition' in window) {
-    recognition = new webkitSpeechRecognition();
-    recognition.continuous = false; // Stop after one sentence
-    recognition.interimResults = true; // As you're talking
-    recognition.lang = 'en-US'; // Set language
+//speech Recognition from https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
+  if ("webkitSpeechRecognition" in window) {
+  recognition = new webkitSpeechRecognition();
+  recognition.continuous = false; // Stop after one sentence
+  recognition.interimResults = true; // type as you're talking
+  recognition.lang = "en-US"; // Set language
 
-    recognition.onstart = () => {
-        console.log('Speech recognition started');
-        submitBtn.innerHTML = micSvg;
-    };
+  recognition.onstart = () => {
+    console.log("Speech recognition started");
+    submitBtn.innerHTML = micSvg;
+  };
 
-    recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        userInput.value = transcript; 
-        submitBtn.innerHTML = sendSvg;
-    };
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    userInput.value = transcript;
+    submitBtn.innerHTML = sendSvg;
+  };
 
-    recognition.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
-        submitBtn.innerHTML = micSvg; // Reset to mic icon
-    };
+  recognition.onerror = (event) => {
+    console.error("Speech recognition error:", event.error);
+    submitBtn.innerHTML = micSvg; // Reset to mic icon
+  };
 
-    recognition.onend = () => {
-        console.log('Speech recognition ended');
-        submitBtn.innerHTML = micSvg; 
-    };
+  recognition.onend = () => {
+    console.log("Speech recognition ended");
+    submitBtn.innerHTML = micSvg;
+  };
 } else {
-    console.warn('Speech recognition not supported in this browser.');
+  console.warn("Speech recognition not supported in this browser.");
 }
 
 async function startSpeechRecognition() {
-    try {
-        // Request microphone access
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        if (recognition) {
-            userInput.placeholder = 'Speak...'
-            recognition.start();
-        }
-    } catch (error) {
-        console.error('Microphone access denied:', error);
-        alert('Microphone access is required for speech recognition. Please allow access in your browser settings.');
+  try {
+    // Request microphone access
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    if (recognition) {
+      userInput.placeholder = "Speak...";
+      recognition.start();
     }
+  } catch (error) {
+    console.error("Microphone access denied:", error);
+    alert(
+      "Microphone access is required for speech recognition. Please allow access in your browser settings."
+    );
+  }
 }
