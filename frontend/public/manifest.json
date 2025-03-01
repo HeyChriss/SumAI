@@ -8,7 +8,9 @@
         "type": "module" 
     },
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_width": 400,
+        "default_height": 600
     },
     "permissions": [],
     "host_permissions": [
