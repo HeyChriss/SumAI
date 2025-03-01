@@ -1,0 +1,9 @@
+{
+    "name": "Sum It Up AI Extension",
+    "description": "first extension attempt",
+    "version": "1.0",
+    "manifest_version" : 3,
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
